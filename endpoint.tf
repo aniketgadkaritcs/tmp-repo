@@ -1,5 +1,5 @@
 resource "aws_vpc_endpoint" "endpoint" {
-  for_each = toset([var.endpoints])
+  for_each = toset(var.endpoints)
   vpc_endpoint_type  = "Interface"
   vpc_id             = var.vpcid
   #service_name       = "com.amazonaws.us-east-1.ec2"
@@ -15,14 +15,14 @@ resource "aws_vpc_endpoint" "endpoint" {
 }
 
 resource "aws_security_group" "epsg" {
-  for_each = toset([var.endpoints])
-  name = "$endpoint_sg_${each.key}"
+  for_each = toset(var.endpoints)
+  name = "endpoint_sg_${each.key}"
   #name   = "endpoint_sg"
   vpc_id = var.vpcid
 }
 
 resource "aws_security_group_rule" "ep_sg_rule" {
-  for_each = toset([var.endpoints])
+  for_each = toset(var.endpoints)
   type = "ingress"
   from_port = "443"
   to_port = "443"

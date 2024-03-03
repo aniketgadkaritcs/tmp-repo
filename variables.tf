@@ -15,6 +15,6 @@ variable "cidr" {
 
 variable "endpoints" {
     type = list(string)
-    default = [ "ec2", "ssm", "kms", "logs" ]
+    default = [ "ec2", "ssm", "kms", "logs", "sts" ]
   
 }
