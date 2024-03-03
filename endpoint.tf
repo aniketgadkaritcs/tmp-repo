@@ -1,7 +1,8 @@
 resource "aws_vpc_endpoint" "ec2" {
   vpc_endpoint_type  = "Interface"
   vpc_id             = var.vpcid
-  service_name       = "com.amazonaws.us-east-1.ec2"
+  #service_name       = "com.amazonaws.us-east-1.ec2"
+  service_name       = "com.amazonaws.us-east-1.${file("../endpoints.txt")}"
   security_group_ids = [aws_security_group.epsg.id]
   tags = {
     Name = "ecvpcendpoint"
