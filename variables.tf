@@ -12,3 +12,9 @@ variable "cidr" {
     default = "10.10.10.0/24"
   
 }
+
+variable "endpoints" {
+    type = list(string)
+    default = [ "ec2", "ssm", "kms", "logs" ]
+  
+}
