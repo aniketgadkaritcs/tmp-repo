@@ -32,3 +32,7 @@ resource "aws_security_group_rule" "ep_sg_rule" {
   cidr_blocks = [var.cidr]
   security_group_id = aws_security_group.epsg[each.key].id
 }
+
+resource "time_sleep" "wait20s" {
+  create_duration = "20s"
+}
