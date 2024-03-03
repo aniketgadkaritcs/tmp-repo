@@ -11,7 +11,7 @@ resource "aws_vpc_endpoint" "ec2" {
 }
 
 resource "aws_security_group" "epsg" {
-  name   = "ep_sg"
+  name   = "endpoint_sg"
   vpc_id = var.vpcid
 }
 
