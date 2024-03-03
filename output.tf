@@ -16,3 +16,8 @@ output "endpoint_sg" {
     #value = aws_security_group.epsg.id  
     value = [for epsg in aws_security_group.epsg: "This is the endpoint security group id ${epsg.id}" ]
 }
+
+output "endpoint_sg_id" {
+  value = aws_security_group.epsg_new.id
+  
+}

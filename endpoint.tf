@@ -33,6 +33,25 @@ resource "aws_security_group_rule" "ep_sg_rule" {
   security_group_id = aws_security_group.epsg[each.key].id
 }
 
+/*
 resource "time_sleep" "wait_forty_secs" {
   create_duration = "40s"
+}
+*/
+
+resource "aws_security_group" "epsg_new" {
+  #for_each = toset(var.endpoints)
+  name = "endpoint_sg_sample"
+  #name   = "endpoint_sg"
+  vpc_id = var.vpcid
+}
+
+resource "aws_security_group_rule" "ep_sg_new_rule" {
+  #for_each = toset(var.endpoints)
+  type = "ingress"
+  from_port = "443"
+  to_port = "443"
+  protocol = "tcp"
+  cidr_blocks = [var.cidr]
+  security_group_id = aws_security_group.epsg_new.id
 }
