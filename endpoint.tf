@@ -1,3 +1,4 @@
+/*
 resource "aws_vpc_endpoint" "endpoint" {
   for_each = toset(var.endpoints)
   vpc_endpoint_type  = "Interface"
@@ -13,6 +14,7 @@ resource "aws_vpc_endpoint" "endpoint" {
   depends_on = [ aws_security_group.epsg, aws_security_group_rule.ep_sg_rule ]
 
 }
+*/
 
 resource "aws_security_group" "epsg" {
   for_each = toset(var.endpoints)
